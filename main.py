@@ -5,7 +5,6 @@ from usecase.list_users import ListUsers
 
 app = FastAPI()
 
-
 list_users = ListUsers(UsersJson("./users.json"))
 
 

@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73ae2e89-307f-47e0-8a2c-89fca1833403" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/repository/users.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -42,6 +42,11 @@
     "git-widget-placeholder": "master"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="RunManager" selected="Python tests.Python tests for list_users_test.TestListUsers">
     <configuration name="Python tests for list_users_test.TestListUsers" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="CleanArchitecture" />
