@@ -1,13 +1,11 @@
 from fastapi import FastAPI
 
 from repository.users import UsersJson
+from rest_api.users import UsersRestApi
 from usecase.list_users import ListUsers
 
-app = FastAPI()
-
 list_users = ListUsers(UsersJson("./users.json"))
+users_rest_api = UsersRestApi(list_users)
 
-
-@app.get("/")
-def read_root():
-    return list_users.run()
+app = FastAPI()
+app.include_router(users_rest_api.router)
