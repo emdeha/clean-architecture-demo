@@ -1,13 +1,14 @@
-import json
 import unittest
 
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
 from repository import users
-from usecase.list_users import ListUsers, User
+from usecase.list_users import ListUsers
 
 from rest_api.users import UsersRestApi
+from usecase.promote_user import PromoteUser
+from usecase.user import User
 
 
 class TestListUsers(unittest.TestCase):
@@ -26,8 +27,8 @@ class TestListUsers(unittest.TestCase):
         self.assertEqual(users_response.status_code, 200)
         self.assertListEqual(
             [
-                {"name": "joe", "email": "joe@test.com", "phone": "0048123123"},
-                {"name": "peter", "email": "peter@test.com", "phone": "0045123123"}
+                {"name": "joe", "email": "joe@test.com", "phone": "0048123123", "promotion": None},
+                {"name": "peter", "email": "peter@test.com", "phone": "0045123123", "promotion": None}
             ],
             users_response.json()
         )
@@ -38,14 +39,15 @@ class TestListUsers(unittest.TestCase):
         self.assertEqual(users_response.status_code, 200)
         self.assertListEqual(
             [
-                {"name": "joe", "email": "joe@test.com", "phone": "0048123123"},
-                {"name": "peter", "email": "peter@test.com", "phone": "0045123123"}
+                {"name": "joe", "email": "joe@test.com", "phone": "0048123123", "promotion": None},
+                {"name": "peter", "email": "peter@test.com", "phone": "0045123123", "promotion": None}
             ],
             users_response.json()
         )
 
-    def do_request(self, list_users_usecase: ListUsers):
-        users_rest_api = UsersRestApi(list_users_usecase)
+    @staticmethod
+    def do_request(list_users_usecase: ListUsers):
+        users_rest_api = UsersRestApi(list_users_usecase, PromoteUser(users.UsersJson("./test_users.json")))
         app = FastAPI()
         app.include_router(users_rest_api.router)
         client = TestClient(app)
