@@ -9,7 +9,6 @@ from usecase.list_users import ListUsers
 
 from rest_api.users import UsersRestApi
 from usecase.promote_user import PromoteUser
-from usecase.user import User
 
 
 class TestPromoteUser(unittest.TestCase):
